@@ -1,0 +1,22 @@
+{
+  "name": "Chickenara",
+  "short_name": "Chickenara",
+  "description": "Simply Chicken Simply Rice Simply Chickenara! Order delicious chicken meals.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#B91C1C",
+  "theme_color": "#B91C1C",
+  "icons": [
+    {
+      "src": "/icon-512x512.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.jpeg",
+      "sizes": "180x180",
+      "type": "image/jpeg"
+    }
+  ]
+}
