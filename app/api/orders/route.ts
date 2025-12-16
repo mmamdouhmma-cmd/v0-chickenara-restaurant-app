@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       if (item.addOns && Array.isArray(item.addOns)) {
         item.addOns.forEach((addon: any) => {
           addOns.push({
-            name: addon.name,
+            name: addon.nameEn || addon.name,
             price: addon.price,
           })
         })
@@ -36,6 +36,16 @@ export async function POST(request: Request) {
     })
 
     const orderNumber = `CHK-${Date.now().toString(36).toUpperCase()}`
+
+    console.log("[v0] Sending to backend:", {
+      order_number: orderNumber,
+      customer_name: body.customer.name,
+      customer_phone: body.customer.phone,
+      customer_address: body.customer.address,
+      items: transformedItems,
+      total_amount: body.total,
+      payment_method: body.paymentMethod,
+    })
 
     const response = await fetch(BACKEND_URL, {
       method: "POST",
@@ -54,8 +64,11 @@ export async function POST(request: Request) {
     const data = await response.json()
 
     if (!response.ok) {
+      console.error("[v0] Backend error:", data)
       throw new Error(data.message || data.error || "Backend error")
     }
+
+    console.log("[v0] Backend response:", data)
 
     return NextResponse.json({
       success: true,
@@ -63,7 +76,7 @@ export async function POST(request: Request) {
       message: "Order placed successfully",
     })
   } catch (error) {
-    console.error("Order error:", error)
+    console.error("[v0] Order error:", error)
     return NextResponse.json({ success: false, message: "Failed to place order" }, { status: 500 })
   }
 }
