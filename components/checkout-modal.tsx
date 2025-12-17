@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { X, Loader2, CreditCard, Banknote, Clock } from "lucide-react"
+import { X, Loader2, Banknote, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -181,14 +181,6 @@ export function CheckoutModal({ open, onClose, onOrderComplete }: CheckoutModalP
                 <Banknote className="h-5 w-5 text-chickenara-orange" />
                 <Label htmlFor="cash" className="cursor-pointer flex-1">
                   Cash on Delivery
-                </Label>
-              </div>
-              <div className="flex items-center space-x-3 p-3 rounded-lg border border-chickenara-orange/30 hover:bg-chickenara-cream transition-colors">
-                <RadioGroupItem value="instapay" id="instapay" className="border-chickenara-red text-chickenara-red" />
-                <CreditCard className="h-5 w-5 text-chickenara-orange" />
-                <Label htmlFor="instapay" className="cursor-pointer flex-1">
-                  <span>InstaPay</span>
-                  <span className="block text-xs text-muted-foreground">Send to: 01055187574</span>
                 </Label>
               </div>
             </RadioGroup>
